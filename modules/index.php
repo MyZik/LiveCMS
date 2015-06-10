@@ -34,21 +34,20 @@ if (isset($_GET['read']) && isset($user)) {
 }
 
 // Главная страница
-// echo '<div class="text-center"><h3>Добро пожаловать!</h3><p>Официальный сайт системы управления контентом LiveCMS.</p></div>';
 echo '<div class="list-group">'.
-		'<div class="list-group-item list-group-item-success"><span class="glyphicon glyphicon-info-sign"></span> ' . $lang['section_useful'] . '</div>';
+	 '<div class="list-group-item list-group-item-success"><span class="glyphicon glyphicon-info-sign"></span> ' . $lang['section_useful'] . '</div>';
 echo '<a class="list-group-item" href="news/index.php"><b>' . $lang['news'] . '</b> <span class="badge">' . $news . '</span> | ' .
 	 '<span class="glyphicon glyphicon-pushpin"></span> ' . $l_news['name'] . ' ' . ($l_news['time'] > (time() - 86400) ? '<span class="label label-warning">!new</span>' : '');
 echo '<a class="list-group-item" href="pages/faq.php"> ' . $lang['faq'] . '</a>'.
-		'</div>';
+	 '</div>';
 
 echo '<div class="list-group">'.
-		'<div class="list-group-item list-group-item-info"><span class="glyphicon glyphicon-comment"></span> ' . $lang['section_comm'] . '</div>';
+	 '<div class="list-group-item list-group-item-info"><span class="glyphicon glyphicon-comment"></span> ' . $lang['section_comm'] . '</div>';
 echo '<a class="list-group-item" href="mini_chat/">' . $lang['mini_chat'] . ' <span class="badge">' . $mini_chat . '</span></a>';
 echo '<a class="list-group-item" href="forum/">' . $lang['forum'] . ' <span class="badge">' . $forum . $forum_update . '</span></a>';
 echo '</div>';
 echo '<div class="list-group">'.
-		'<div class="list-group-item list-group-item-warning"><span class="glyphicon glyphicon-bookmark"></span> ' . $lang['section_users'] . '</div>';
+	 '<div class="list-group-item list-group-item-warning"><span class="glyphicon glyphicon-bookmark"></span> ' . $lang['section_users'] . '</div>';
 echo '<a class="list-group-item" href="user/userlist.php">' . $lang['all_users'] . ' <span class="badge">' . $users . '</span></a>';
 echo '<a class="list-group-item" href="user/online.php">' . $lang['on_u'] . ' <span class="badge">' . $online_u . '</span></a>';
 echo '</div>';
