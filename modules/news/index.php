@@ -28,7 +28,7 @@ if (isset($_GET['delete'])) {
 			 '</div>';
 		require_once(HOME .'/includes/footer.php');
 	}
-	
+
 	/**
      * Проверяем, верен ли введенный параметр
      */
