@@ -29,7 +29,7 @@ if (isset($_GET['delete'])) {
 		require_once(HOME .'/includes/footer.php');
 	}
 
-	/**
+    /**
      * Проверяем, верен ли введенный параметр
      */
 	if (!is_numeric($_GET['delete']))
