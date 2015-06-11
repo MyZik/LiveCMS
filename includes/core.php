@@ -72,6 +72,7 @@ if (isset($user)) {
 	$set_user['sex_view'] = $cms_set['sex_view']; // Показ пола иконками (icons) или текстом (text)
 	$set_user['theme'] = $cms_set['theme']; // Тема оформления
 	$set_user['language'] = $cms_set['language']; // Язык
+	$set_user['show_avatars'] = $cms_set['show_avatars']; // Показ аватаров
 	$countMess = $set_user['num_pages'];
 }
 
