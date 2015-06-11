@@ -12,7 +12,8 @@ class Functions extends Core {
 	 * Функция вывода успешной информации
 	 */
 	public static function display_message($var = '', $backLink = '') {
-		if (!isset($backLink))
+		global $lang;
+		if (empty($backLink))
 		 return '<div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span>&nbsp;' . $var . '</div>';
 		else
 			return '<div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span>&nbsp;' . $var . '</div>' .
@@ -180,7 +181,7 @@ class Functions extends Core {
 	 * Расширенный вывод данных пользователя
 	 */
 	public static function display_user($user_id = 0, $info = '', $body = '', $end = '') {
-		global $db, $set_user, $lang, $user;
+		global $db, $cms_set, $set_user, $lang, $user;
 		$profile = $db->query("SELECT * FROM `users` WHERE `id` = '" . $user_id . "'")->fetch();
 		// Показываем аватары
 		if ($set_user['show_avatars'] == 'yes') {
