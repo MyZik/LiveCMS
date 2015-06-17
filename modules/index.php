@@ -33,10 +33,12 @@ if (isset($_GET['read']) && isset($user)) {
 	$db->query("UPDATE `users` SET `read_news` = 'yes' WHERE `id` = '" . $user['id'] . "'");
 }
 
-// Главная страница
+/**
+ * Вывод ссылок
+ */
 echo '<div class="list-group">'.
 	 '<div class="list-group-item list-group-item-success"><span class="glyphicon glyphicon-info-sign"></span> ' . $lang['section_useful'] . '</div>';
-echo '<a class="list-group-item" href="news/index.php"><b>' . $lang['news'] . '</b> <span class="badge">' . $news . '</span>' .
+echo '<a class="list-group-item" href="news/"><b>' . $lang['news'] . '</b> <span class="badge">' . $news . '</span>' .
 	 ($l_news['time'] > (time() - 86400) ? ' | <span class="glyphicon glyphicon-pushpin"></span> ' . $l_news['name'] . ' <span class="label label-warning">!new</span>' : '');
 echo '<a class="list-group-item" href="pages/faq.php"> ' . $lang['faq'] . '</a>'.
 	 '</div>';
@@ -48,8 +50,8 @@ echo '<a class="list-group-item" href="forum/">' . $lang['forum'] . ' <span clas
 echo '</div>';
 echo '<div class="list-group">'.
 	 '<div class="list-group-item list-group-item-warning"><span class="glyphicon glyphicon-bookmark"></span> ' . $lang['section_users'] . '</div>';
-echo '<a class="list-group-item" href="user/userlist.php">' . $lang['all_users'] . ' <span class="badge">' . $users . '</span></a>';
-echo '<a class="list-group-item" href="user/online.php">' . $lang['on_u'] . ' <span class="badge">' . $online_u . '</span></a>';
+echo '<a class="list-group-item" href="users/users.php">' . $lang['all_users'] . ' <span class="badge">' . $users . '</span></a>';
+echo '<a class="list-group-item" href="users/online.php">' . $lang['on_u'] . ' <span class="badge">' . $online_u . '</span></a>';
 echo '</div>';
 echo '</div>';
 
