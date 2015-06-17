@@ -1,12 +1,12 @@
 <?php
 /****
-* @package LiveCMS
-* @link livecms.org
-* @author MyZik
-* @version See attached file VERSION.txt
-* @license See attached file LICENSE.txt
-* @copyright Copyright (C) LiveCMS Development Team
-****/
+ * @package LiveCMS
+ * @link livecms.org
+ * @author MyZik
+ * @version See attached file VERSION.txt
+ * @license See attached file LICENSE.txt
+ * @copyright Copyright (C) LiveCMS Development Team
+ ****/
 
 /**
  * Проверка наличия авторизации
@@ -53,4 +53,5 @@ echo '<div class="list-group-item"><form method="post" action="/" class="form-ho
      '</div>' .
      '</div>' .
      '</form></div>';
+
 require_once(HOME .'/includes/footer.php'); // Подключаем ноги
