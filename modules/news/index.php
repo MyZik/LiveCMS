@@ -29,7 +29,7 @@ if (isset($_GET['delete'])) {
 		require_once(HOME .'/includes/footer.php');
 	}
 
-    /**
+	/**
      * Проверяем, верен ли введенный параметр
      */
 	if (!is_numeric($_GET['delete']))
@@ -48,7 +48,7 @@ if (isset($_GET['delete'])) {
      * Небольшая панель навигации
      */
     echo '<ul class="breadcrumb">' .
-    	 '<li><a href="/forum/">' . $lang['news'] . '</a></li>' .
+    	 '<li><a href="/news/">' . $lang['news'] . '</a></li>' .
     	 '<li class="active">' . $lang_news['delete_post'] . ' "' . Core::textFilter($post['name']) . '"</li>' .
     	 '</ul>';
 	
@@ -80,6 +80,13 @@ if (isset($_GET['delete'])) {
 }
 
 /**
+ * Небольшая панель навигации
+ */
+echo '<ul class="breadcrumb">' .
+	 '<li class="active">' . $lang['news'] . '</li>' .
+	 '</ul>';
+
+/**
  * Админские функции
  */
 echo (isset($user) && $user['rights'] >= 7 ? '<div class="list-group"><a class="list-group-item" href="add.php"><span class="glyphicon glyphicon-chevron-right"></span> ' . $lang_news['add_post'] . '</a></div>' : '');
@@ -99,12 +106,12 @@ if ($total < 1) {
 
 $i = 0;
 while ($res = $req->fetch()) {
-	echo ($i % 2) ? '<div class="list1">' : '<div class="list2">';
+    echo ($i % 2) ? '<div class="list1">' : '<div class="list2">';
     $add = $db->query("SELECT * FROM `users` WHERE `id` = '" . $res['user_id'] . "'") -> fetch();
     echo '<b>' . $lang_news['post'] . '</b>: ' . Core::textFilter($res['name']) . '<br />' . 
     Functions::output_text(Core::textFilter($res['text'])) . '<br />' .
     '<b>' . $lang_news['add_by'] . '</b>: ' . $add['login'] . ' (' . Functions::display_time($res['time']) . ')' .
-    '<br /><a href="comments.php?id=' . $res['id'] . '">' . $lang['comments'] . '</a> ' . $db->query("SELECT * FROM `news_comments` WHERE `news_id` = '" . $res['id'] . "'") -> rowCount() . 
+    '<br /><a href="comments.php?id=' . $res['id'] . '">' . $lang['comments'] . '</a>: ' . $db->query("SELECT * FROM `news_comments` WHERE `news_id` = '" . $res['id'] . "'") -> rowCount() . 
     (isset($user) && $user['rights'] >= 7 ? '<br />[<a href="edit.php?id=' . $res['id'] . '">' . $lang['edit'] . '</a> | <a href="?delete=' . $res['id'] . '">' . $lang['delete'] . '</a>]' : '') . '</div>';
     $i++;
 } 
@@ -113,7 +120,7 @@ while ($res = $req->fetch()) {
  * Пагинация
  */
 if ($total > $countMess) {
-	echo Functions::display_pagination('index.php?', $start, $total, $countMess);
+	echo Functions::display_pagination('?', $start, $total, $countMess);
 }
 
 require_once(HOME .'/includes/footer.php'); // Подключаем ноги
