@@ -23,9 +23,17 @@ if (isset($err))
 	echo Core::display_error($err);
 
 /**
+ * Небольшая панель навигации
+ */
+echo '<ul class="breadcrumb">' .
+	 '<li class="active">' . $lang['authorization'] . '</li>' .
+	 '</ul>';
+
+/**
  * Форма
  */
-echo '<div class="list-group-item"><form method="post" action="/" class="form-horizontal" role="form">' .
+echo '<div class="list-group">' .
+	 '<div class="list-group-item"><form method="post" action="/" class="form-horizontal" role="form">' .
 	 '<div class="form-group">' .
      '<label for="login" class="col-sm-1 control-label">' . $lang['login_name'] . '</label>' .
      '<div class="col-sm-10">' .
@@ -52,6 +60,6 @@ echo '<div class="list-group-item"><form method="post" action="/" class="form-ho
      '<button type="submit" class="btn btn-default">' . $lang['log_in'] . '</button>' .
      '</div>' .
      '</div>' .
-     '</form></div>';
+     '</form></div></div>';
 
 require_once(HOME .'/includes/footer.php'); // Подключаем ноги
