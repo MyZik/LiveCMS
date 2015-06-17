@@ -1,13 +1,14 @@
 <?php
 /****
-* @package LiveCMS
-* @link livecms.org
-* @author MyZik
-* @version See attached file VERSION.txt
-* @license See attached file LICENSE.txt
-* @copyright Copyright (C) LiveCMS Development Team
-****/
-$lang_news = Core::load_lang('news');
+ * @package LiveCMS
+ * @link livecms.org
+ * @author MyZik
+ * @version See attached file VERSION.txt
+ * @license See attached file LICENSE.txt
+ * @copyright Copyright (C) LiveCMS Development Team
+ ****/
+
+$lang_news = $core->load_lang('news');
 $title = $lang_news['news']; // Заголовок страницы
 $module = 'news'; // Модуль
 
@@ -39,7 +40,7 @@ if ($user['rights'] < 7) {
  * Небольшая панель навигации
  */
 echo '<ul class="breadcrumb">' .
-	 '<li><a href="index.php">' . $lang['news'] . '</a></li>' .
+	 '<li><a href="/news/">' . $lang['news'] . '</a></li>' .
 	 '<li class="active">' . $lang_news['add_news'] . '</li>' .
 	 '</ul>';
 
@@ -87,10 +88,9 @@ if (isset($_POST['add'])) {
     			'text' => $text,
     			'time' => time(),
     			'user_id' => $user['id'],
-    			'days_homepage' => $main_time
+    			'days_homepage' => Core::num($main_time)
     	));
     	
-     	//$db->query("INSERT INTO `cms_news` (`name`, `text`, `time`, `user_id`, `days_homepage`) VALUES ('$name', '$text', '" . time() . "', '" . $user['id'] . "', '$main_time')");
       	$db->query("UPDATE `users` SET `read_news` = 'no'");
       	echo Functions::display_message($lang_news['add_news_success']);
     } else {
@@ -103,15 +103,15 @@ if (isset($_POST['add'])) {
  */
 echo '<div class="list-group-item">' .
   	 '<form name="message" method="post" action="add.php">' . 
-  	 $lang_news['post_name'] . '<br />' .
+  	 '<b>' . $lang_news['post_name'] . '</b><br />' .
   	 '<div class="input-group">' .
   	 '<input type="text" class="form-control" name="name">' .
   	 '</div>' .
-  	 $lang_news['post_text'] . '<br />' .
+  	 '<b>' . $lang_news['post_text'] . '</b><br />' .
   	 bb_panel('message', 'text') .
   	 '<textarea class="form-control" name="text"></textarea>' .
-  	 $lang_news['tags_info'] . '<br />' .
-  	 $lang_news['days_homepage'] . '<br />' .
+  	 '<span class="help-block">' . $lang_news['tags_info'] . '</span>' .
+  	 '<b>' .$lang_news['days_homepage'] . '</b><br />' .
   	 '<div class="input-group"><input type="text" class="form-control" name="days_homepage" size="1" value="1" /></div>' .
   	 '<input type="submit" class="btn btn-default" name="add" value="' . $lang_news['send_news'] . '" />' .
   	 '</form></div>';
