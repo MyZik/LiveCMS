@@ -106,7 +106,7 @@ if ($total < 1) {
 
 $i = 0;
 while ($res = $req->fetch()) {
-    echo ($i % 2) ? '<div class="list1">' : '<div class="list2">';
+	echo ($i % 2) ? '<div class="list1">' : '<div class="list2">';
     $add = $db->query("SELECT * FROM `users` WHERE `id` = '" . $res['user_id'] . "'") -> fetch();
     echo '<b>' . $lang_news['post'] . '</b>: ' . Core::textFilter($res['name']) . '<br />' . 
     Functions::output_text(Core::textFilter($res['text'])) . '<br />' .
@@ -119,8 +119,7 @@ while ($res = $req->fetch()) {
 /**
  * Пагинация
  */
-if ($total > $countMess) {
+if ($total > $countMess)
 	echo Functions::display_pagination('?', $start, $total, $countMess);
-}
 
 require_once(HOME .'/includes/footer.php'); // Подключаем ноги
