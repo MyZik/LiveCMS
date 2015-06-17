@@ -15,6 +15,13 @@ $module = 'mini_chat'; // Модуль
 require_once(HOME .'/includes/header.php'); // Подключаем шапку
 
 /**
+ * Небольшая панель навигации
+ */
+echo '<ul class="breadcrumb">' .
+	 '<li class="active">' . $lang['mini_chat'] . '</li>' .
+	 '</ul>';
+
+/**
  * Ответ на сообщение
  */
 if (isset($_GET['reply']) && $_GET['reply'] != $user['id']) {
