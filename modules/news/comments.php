@@ -128,13 +128,13 @@ if (isset($_GET['delete']) && ($user['rights'] >= 7)) {
  * Форма
  */
 if (isset($user)) {
-	echo '<div class="list-group-item">' .
+	echo '<div class="list-group"><div class="list-group-item">' .
 		 '<form name="message" action="comments.php?id=' . $ID . '" method="post">' .
 		 '<b>' . $lang['enter_message'] . '</b><br />' . 
 		 bb_panel('message', 'message') .
 		 '<textarea class="form-control" name="message"></textarea>' .
-		 '<input type="submit" class="btn btn-default" name="send" value="' . $lang['send'] . '" />' .
-		 '</form></div>';
+		 '<input type="submit" class="btn btn-primary" name="send" value="' . $lang['send'] . '" />' .
+		 '</form></div></div>';
 }
 
 /**
