@@ -112,8 +112,10 @@ echo '<div class="list-group-item">' .
   	 '<textarea class="form-control" name="text"></textarea>' .
   	 '<span class="help-block">' . $lang_news['tags_info'] . '</span>' .
   	 '<b>' .$lang_news['days_homepage'] . '</b><br />' .
-  	 '<div class="input-group"><input type="text" class="form-control" name="days_homepage" size="1" value="1" /></div>' .
-  	 '<input type="submit" class="btn btn-default" name="add" value="' . $lang_news['send_news'] . '" />' .
+  	 '<div class="input-group">' .
+  	 '<input type="text" class="form-control" name="days_homepage" size="1" value="1" />' .
+  	 '</div>' .
+  	 '<input type="submit" class="btn btn-primary" name="add" value="' . $lang_news['send_news'] . '" />' .
   	 '</form></div>';
   
 /**
