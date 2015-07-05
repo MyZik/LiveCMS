@@ -177,10 +177,10 @@ echo '<div class="list-group-item">' .
   	 $lang['captcha_code'] . ':<br />';
   	 echo captcha(); // Показываем каптчу
   	 echo '<div class="input-group">' .
-  	      '<input type="text" class="form-control" name="reg_code" size="5"/>' .
-  	      '</div>' .
-  	      '<input type="submit" class="btn btn-default" name="reg_submit" value="' . $lang['register_me'] . '" />' .
-  	      '</form></div>';
+  	          '<input type="text" class="form-control" name="reg_code" size="5"/>' .
+  		  '</div>' .
+  		  '<input type="submit" class="btn btn-default" name="reg_submit" value="' . $lang['register_me'] . '" />' .
+  		  '</form></div>';
 
 echo '<div class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> ' . $lang['required_fields'] . '</div>';
 
