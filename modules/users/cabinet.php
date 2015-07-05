@@ -58,16 +58,19 @@ echo '<div class="panel panel-info"><div class="panel-heading"><b>' . $lang['pri
 	 '<a class="list-group-item" href="avatar.php"><span class="glyphicon glyphicon-adjust"></span> ' . $lang['my_avatar'] . '</a>' .
 	 '<a class="list-group-item" href="photo.php"><span class="glyphicon glyphicon-picture"></span> ' . $lang['photo_profile'] . '</a>' .
 	 '</div></div>' .
+	 
 	 '<div class="panel panel-success"><div class="panel-heading"><b>' . $lang['modules'] . '</b></div>' .
 	 '<div class="list-group">' .
 	 '<a class="list-group-item" href="/mail/"><span class="glyphicon glyphicon-envelope"></span> ' . $lang['my_mails'] . ' <span class="badge">' . $contacts . ' / ' . $mails . '</span></a>' .
 	 '<a class="list-group-item" href="journal.php"><span class="glyphicon glyphicon-list-alt"></span> ' . $lang['journal'] . ' <span class="badge">' . $journal . '</span></a>' .
 	 '</div></div>' .
+	 
 	 '<div class="panel panel-warning"><div class="panel-heading"><b>' . $lang['parameters'] . '</b></div>' .
 	 '<div class="list-group">' .
 	 '<a class="list-group-item" href="settings.php"><span class="glyphicon glyphicon-cog"></span> ' . $lang['my_settings'] . '</a>' .
 	 '<a class="list-group-item" href="change_password.php"><span class="glyphicon glyphicon-lock"></span> ' . $lang['change_password'] . '</a>' .
 	 '</div></div>' .
+	 
 	 '<div class="panel panel-danger"><div class="panel-heading"><b>' . $lang['other'] . '</b></div>' .
 	 '<div class="list-group">' .
 	 ($user['rights'] >= 1 ? '<a class="list-group-item" href="/dpanel/"><span class="glyphicon glyphicon-briefcase"></span> <b>' . $lang['direct_panel'] . '</b></a>' : '') .
