@@ -1,4 +1,4 @@
-<?php
+	<?php
 /****
  * @package LiveCMS
  * @link livecms.org
@@ -60,7 +60,7 @@ if (empty($ID) || ($db->query("SELECT * FROM `cms_news` WHERE `id` = '$ID'")->ro
     require_once(HOME .'/includes/footer.php');
 }
 
-require_once(HOME .'/includes/header.php'); // Выводим шапку
+require_once(HOME .'/includes/header.php'); // Подключаем шапку
 
 /**
  * Небольшая панель навигации
@@ -116,7 +116,7 @@ if (isset($_POST['save'])) {
 /**
  * Форма
  */
-echo '<div class="list-group-item">' .
+echo '<div class="list-group"><div class="list-group-item">' .
 	 '<form method="post" action="edit.php?id=' . $ID . '">' . 
 	 '<b>' . $lang_news['post_name'] . '</b><br />' .
 	 '<div class="input-group">' .
@@ -126,8 +126,8 @@ echo '<div class="list-group-item">' .
 	 bb_panel('message', 'text') .
 	 '<textarea class="form-control" name="text">' . $news['text'] . '</textarea>' .
 	 '<span class="help-block">' . $lang_news['tags_info'] . '</span>' .
-	 '<input type="submit" class="btn btn-default" name="save" value="' . $lang['edit'] . '" />' .
-	 '</form></div>';
+	 '<input type="submit" class="btn btn-primary" name="save" value="' . $lang['edit'] . '" />' .
+	 '</form></div></div>';
 
 /**
  * Нижняя панель навигации
@@ -136,4 +136,4 @@ echo '<div class="list-group">' .
      '<a class = "list-group-item" href="/news/"><span class="glyphicon glyphicon-chevron-left"></span> ' . $lang['back'] . '</a>' .
      '</div>';
 
-require_once(HOME .'/includes/footer.php'); // подключаем ноги
+require_once(HOME .'/includes/footer.php'); // Подключаем ноги
