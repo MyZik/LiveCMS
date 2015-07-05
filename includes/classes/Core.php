@@ -33,12 +33,12 @@ class Core {
 	/**
 	 * Функция вывода ошибок
 	 */
-	 public static function display_error($var = '', $backLink = '') {
+	 public static function display_error($text = '', $backLink = '') {
 	 	global $lang;
-	 	if (!empty($var)) {
+	 	if (!empty($text)) {
 	 		return '<div class="alert alert-danger"><span class="glyphicon glyphicon-remove"><b>' . $lang['error'] . '!</b><br /> ' .
-	 		(is_array($var) ? implode('<br />', $var) : $var) . '' .
-	 		(!empty($link) ? '<p>' . $link . '</p>' : '') . '</div>';
+	 		(is_array($text) ? implode('<br />', $text) : $text) . '</div>' .
+	 		(!empty($backLink) ? '<div class="list-group"><a class = "list-group-item" href="' . $backLink . '"><span class="glyphicon glyphicon-chevron-left"></span> ' . $lang['back'] . '</a></div>' : '');
 	 	} else {
 	 		return FALSE;
 	 	}
@@ -80,15 +80,18 @@ class Core {
 			$out = parse_ini_file($lang_file) or die('ОШИБКА! Файл языкового пакета не найден');
 			return $out;
 		}
-		echo '<div class="alert alert-danger">Language file <b>' . HOME . '/incfiles/languages/' . $lang_iso . '/' . $module . '.lang</b> is missing</div>';
+		echo '<div class="alert alert-danger">Language file <b>' . HOME . '/includes/languages/' . $lang_iso . '/' . $module . '.lang</b> is missing</div>';
 		return FALSE;
 	}
 	
+	/**
+	 * Функция вывода сообщения о регистрации
+	 */
 	public static function onlyUsers($backLink = '') {
 		global $lang;
-			echo '<div class="alert alert-danger">' . $lang['only_users'] . '</div>';
-			echo '<div class="list-group">' .
-				 '<a class = "list-group-item" href="' . $backLink . '"><span class="glyphicon glyphicon-chevron-left"></span> ' . $lang['back'] . '</a>' .
-				 '</div>';
+		echo '<div class="alert alert-danger">' . $lang['only_users'] . '</div>';
+		echo '<div class="list-group">' .
+			 '<a class = "list-group-item" href="' . $backLink . '"><span class="glyphicon glyphicon-chevron-left"></span> ' . $lang['back'] . '</a>' .
+			 '</div>';
 	}
 }
