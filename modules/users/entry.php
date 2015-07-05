@@ -57,7 +57,7 @@ echo '<div class="list-group">' .
   	 '</div>' .
   	 '<div class="form-group">' .
      '<div class="col-sm-offset-1 col-sm-10">' .
-     '<button type="submit" class="btn btn-default">' . $lang['log_in'] . '</button>' .
+     '<button type="submit" class="btn btn-primary">' . $lang['log_in'] . '</button>' .
      '</div>' .
      '</div>' .
      '</form></div></div>';
