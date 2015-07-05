@@ -7,6 +7,7 @@
  * @license See attached file LICENSE.txt
  * @copyright Copyright (C) LiveCMS Development Team
  ****/
+
 class Functions extends Core {
 	/**
 	 * Функция вывода успешной информации
@@ -14,7 +15,7 @@ class Functions extends Core {
 	public static function display_message($var = '', $backLink = '') {
 		global $lang;
 		if (empty($backLink))
-		 return '<div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span>&nbsp;' . $var . '</div>';
+			return '<div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span>&nbsp;' . $var . '</div>';
 		else
 			return '<div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span>&nbsp;' . $var . '</div>' .
 				   '<div class="list-group">' .
@@ -102,9 +103,9 @@ class Functions extends Core {
 				'|:>' => '<img src="' . $smileys_dir . 'angry.png" alt="Smile" />',
 				':angry:' => '<img src="' . $smileys_dir . 'angry.png" alt="Smile" />',
 				':-Z' => '<img src="' . $smileys_dir . 'sleep.png" alt="Smile" />',
-						':sleep:' => '<img src="' . $smileys_dir . 'sleep.png" alt="Smile" />',
-						':bravo:' => '<img src="' . $smileys_dir . 'bravo.png" alt="Smile" />',
-						':angel:' => '<img src="' . $smileys_dir . 'angel.png" alt="Smile" />',
+				':sleep:' => '<img src="' . $smileys_dir . 'sleep.png" alt="Smile" />',
+				':bravo:' => '<img src="' . $smileys_dir . 'bravo.png" alt="Smile" />',
+				':angel:' => '<img src="' . $smileys_dir . 'angel.png" alt="Smile" />',
 				':crazy:' => '<img src="' . $smileys_dir . 'crazy.png" alt="Smile" />',
 				':lol:' => '<img src="' . $smileys_dir . 'lol.png" alt="Smile" />');
 		return strtr($text, $smileys_array);
@@ -186,8 +187,8 @@ class Functions extends Core {
 		// Показываем аватары
 		if ($set_user['show_avatars'] == 'yes') {
 			echo '<table cellpadding="0" cellspacing="0"><tr><td>';
-			if (file_exists(HOME . '/files/avatar/' . $profile['id'] . '.png'))
-				echo '<img src="/files/avatar/' . $profile['id'] . '.png" width="32" height="32" alt="' . $profile['login'] . '" />&#160;';
+			if (file_exists(HOME . '/files/avatars/' . $profile['id'] . '.png'))
+				echo '<img src="/files/avatars/' . $profile['id'] . '.png" width="32" height="32" alt="' . $profile['login'] . '" />&#160;';
 			else
 				echo '<img src="/design/avatar_default.png" width="32" height="32" alt="' . $profile['login'] . '" />&#160;';
 			echo '</td><td>';
@@ -208,8 +209,11 @@ class Functions extends Core {
 				10 => '(SV!)'
 		);
 		$uRights =  ' <span style="color:blue">' . $rights[$profile['rights']] . '</span>';
-	
-		echo $sex_view . '&nbsp;' . (isset($user) ? '<a href="/user/profile.php?id=' . $profile['id'] . '"><b>' . htmlspecialchars($profile['login']) . '</b></a>' : '<b>' . $profile['login'] . '</b>') . (time() > $profile['date_last_entry'] + 600 ? ' <span style="color:red">[Off]</span>' : ' <span style="color:green">[On]</span>') . $uRights;
+		$on = (time() > $profile['date_last_entry'] + 600 ? '<span style="color: red">[Off]</span>' : '<span style="color: lime">[On]</span>');
+		$login = '<b>' . Core::textFilter($profile['login']) . '</b>';
+		
+		echo $sex_view . '&nbsp;' . (isset($user) ? '<a href="/users/profile.php?id=' . $profile['id'] . '">' . $login . '</a> ' . $on
+				: $login . ' ' . $on) . $uRights;
 	
 		if ($info)
 			echo $info;
@@ -251,7 +255,7 @@ class Functions extends Core {
 	 			);
 	 	$uRights =  ' <span style="color:blue">' . $rights[$profile['rights']] . '</span>';
 	
-	 	echo $sex_view . '&nbsp;' . (isset($user) ? '<a href="/user/profile.php?id=' . $profile['id'] . '"><b>' . htmlspecialchars($profile['login']) . '</b></a>' : '<b>' . $profile['login'] . '</b>') . (time() > $profile['date_last_entry'] + 600 ? ' <span style="color:red">[Off]</span>' : ' <span style="color:green">[On]</span>') . $uRights;
+	 	echo $sex_view . '&nbsp;' . (isset($user) ? '<a href="/users/profile.php?id=' . $profile['id'] . '"><b>' . htmlspecialchars($profile['login']) . '</b></a>' : '<b>' . $profile['login'] . '</b>') . (time() > $profile['date_last_entry'] + 600 ? ' <span style="color:red">[Off]</span>' : ' <span style="color:green">[On]</span>') . $uRights;
 	
 	 	if ($info)
 	 		echo $info;
