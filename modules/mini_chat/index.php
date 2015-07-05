@@ -102,6 +102,15 @@ if (isset($_POST['send']) && isset($user)) {
      */
     if (!isset($err)) {
     	/**
+    	 * Оповещение в журнал (уведомление об ответе, если есть)
+    	 */
+    	if (!empty($reply_user)) {
+    		$journalMessage = $lang['journal_user'] . ' [url=/users/profile.php?id=' . $user['id'] . ']' . $user['login'] . '[/url] ' . $lang['journal_mini_chat_answer'];
+    		journal_add($reply['id'], $journalMessage);
+    		echo $reply['id'] . ' ' . $journalMessage;
+    	}
+    	
+    	/**
     	 * Подготавливаем запрос
     	 */
     	$st = $db->prepare("INSERT INTO `mini_chat` (`user_id`, `time`, `message`)
@@ -120,6 +129,7 @@ if (isset($_POST['send']) && isset($user)) {
       			`postsmchat` = `postsmchat` + 1,
       			`lastpost` = '" . time() . "'
       			WHERE `id` = '" . $user['id'] . "' LIMIT 1");
+      	
       	echo Functions::display_message($lang_mchat['add_success']);
      } else {
         echo Core::display_error($err); // выводим ошибки
@@ -134,14 +144,14 @@ if (isset($user)) {
   	$lang['enter_message'] . '<br />' . 
   	bb_panel('message', 'message') .
   	'<textarea class="form-control" name="message">' . (!empty($reply_user) ? $reply_user : '') . '</textarea>' .
-  	'<input type="submit" class="btn btn-default" name="send" value="' . $lang['send'] . '" />' .
+  	'<input type="submit" class="btn btn-primary" name="send" value="' . $lang['send'] . '" />' .
   	'</form></div>';
 }
 
 /**
  * Настраиваем пагинацию
  */
-$total = $db->query("SELECT * FROM `mini_chat`") -> rowCount();
+$total = $db->query("SELECT * FROM `mini_chat`")->rowCount();
 $req = $db->query("SELECT * FROM `mini_chat` ORDER BY `id` DESC LIMIT $start, $countMess");
 
 /**
@@ -154,7 +164,7 @@ if ($total < 1)
 /**
  * Вывод сообщений
  */
-$i = 1;
+$i = 0;
 while ($res = $req->fetch()) {
 	echo ($i % 2) ? '<div class="list1">' : '<div class="list2">';
     $info = ' [' . $functions->display_time($res['time']) . ']' . (isset($user) && $user['id'] != $res['user_id'] ? ' <a href="?reply=' . $res['user_id'] . '">' . $lang_mchat['reply'] . '</a>' : '');
